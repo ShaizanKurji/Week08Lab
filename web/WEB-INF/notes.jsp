@@ -8,11 +8,7 @@
         <link rel="stylesheet" href="<c:url value='styles/notes.css' />" />
     </head>
     <body>
-        <div class="bg">
-            <video class="bg_vid" preload="auto" autoplay="true" loop="loop"> 
-               <source src="res/heman.mp4" type="video/mp4">
-               Video not supported
-           </video>
+       
         
         <h1>Manage Notes</h1>
         <h2>Notes</h2>
@@ -25,21 +21,21 @@
             </tr>
             <c:forEach var="note" items="${notes}">
                 <tr>
-                    <td>${note.noteID}</td>
+                    <td>${note.noteid}</td>
                     <td>${note.dateCreated}</td>
                     <td>${note.content}</td>
                     <td>
                         <form action="notes" method="post" >
                             <input type="submit" value="Delete">
                             <input type="hidden" name="action" value="delete">
-                            <input type="hidden" name="selectedNoteID" value="${note.noteID}">
+                            <input type="hidden" name="selectedNoteID" value="${note.noteid}">
                         </form>
                     </td>
                     <td>
                         <form action="notes" method="get">
                             <input type="submit" value="Edit">
                             <input type="hidden" name="action" value="view">
-                            <input type="hidden" name="selectedNoteID" value="${note.noteID}">
+                            <input type="hidden" name="selectedNoteID" value="${note.noteid}">
                         </form>
                     </td>
                 </tr>
@@ -56,7 +52,7 @@
         <c:if test="${selectedNoteID != null}">
             <h3>Edit Note</h3>
             <form action="notes" method="POST">
-                Note id: <input type="text" name="noteID" value="${selectedNoteID.noteID}" readonly><br>
+                Note id: <input type="text" name="noteID" value="${selectedNoteID.noteid}" readonly><br>
                 Date Created: <input type="text" name="dateCreated" value="${selectedNoteID.dateCreated}" readonly><br>
                 Content: <input type="text" name="content" value="${selectedNoteID.content}"><br>
                 <input type="hidden" name="action" value="edit">

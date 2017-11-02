@@ -51,7 +51,7 @@ public class NoteDB {
             PreparedStatement ps = connection.prepareStatement(preparedSQL);
 
             ps.setString(1, note.getContent());
-            ps.setInt(2, note.getNoteID());
+            ps.setInt(2, note.getNoteid());
 
             int rows = ps.executeUpdate();
             return rows;
@@ -138,7 +138,7 @@ public class NoteDB {
 
         try {
             ps = connection.prepareStatement(preparedQuery);
-            ps.setInt(1, note.getNoteID());
+            ps.setInt(1, note.getNoteid());
             int rows = ps.executeUpdate();
             return rows;
         } catch (SQLException ex) {

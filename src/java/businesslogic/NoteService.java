@@ -22,7 +22,8 @@ public class NoteService {
     }
 
     public int update(int noteid, String contents) throws Exception {
-        Note note = new Note(noteid,contents);
+        Note note = noteDB.getNote(noteid);
+        note.setContent(contents);
         return noteDB.update(note);
     }
 
@@ -33,7 +34,7 @@ public class NoteService {
 
     public int insert(String contents) throws Exception {
         Date date = new Date();
-        Note note = new Note(contents,date);
+        Note note = new Note(date, contents);
         return noteDB.insert(note);
     }
 }
